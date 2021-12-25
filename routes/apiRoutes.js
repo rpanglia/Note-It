@@ -67,27 +67,6 @@ apiRouters.post('/api/notes', (req, res) => {
 //DELETE to be added here
 apiRouters.delete('/api/notes/:id', (req, res) => {
 
-    // fs.readFile('./db/db.json', 'utf8', (err, file) => {
-    //     if (err) throw err;
-
-    //     let removeNote = req.params.id; //can be reassigned
-
-    //     const addNotes = JSON.parse(file);
-    //     const combinedNotes = addNotes.filter(elem => elem.id != removeNote);
-
-    //     const allNotes = JSON.stringify(combinedNotes);
-    //     fs.writeFile('./db/db.json', allNotes, 'utf8', (err) => {
-    //         if (err) throw err;
-    //         console.log("Note deleted successfully");
-    //     });
-        
-    //     return res.send(JSON.parse(allNotes));
-
-
-
-    // });
-
-
     fs.readFile('./db/db.json', 'utf8', (err, file) => {
         if (err) throw err;
 
