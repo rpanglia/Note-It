@@ -1,16 +1,17 @@
 {
   "name": "note-it",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Note taking application",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rpanglia/Note-It.git"
   },
-  "author": "",
+  "author": "Ravneet Panglia",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/rpanglia/Note-It/issues"
@@ -20,5 +21,6 @@
     "express": "^4.17.2",
     "uuid": "^8.3.2",
     "uuidv4": "^6.2.12"
-  }
+  },
+  "devDependencies": {}
 }
