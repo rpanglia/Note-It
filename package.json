@@ -19,8 +19,8 @@
   "homepage": "https://github.com/rpanglia/Note-It#readme",
   "dependencies": {
     "express": "^4.17.2",
+    "node": "^17.3.0",
     "uuid": "^8.3.2",
     "uuidv4": "^6.2.12"
-  },
-  "devDependencies": {}
+  }
 }
