@@ -5,8 +5,6 @@ const { v4: uuidv4 } = require('uuid');
 
 const apiRouters = express.Router();
 
-// let notes = JSON.parse(fs.readFileSync(path.join(__dirname, './db/db.json')));
-
 
 //GET
 apiRouters.get('/api/notes', (req, res) => {
@@ -24,26 +22,8 @@ apiRouters.get('/api/notes', (req, res) => {
 //POST
 apiRouters.post('/api/notes', (req, res) => {
 
-    // const newNote = req.body;
-    // newNote.id = uuidv4();
-
-    // notes.push(newNote);
-
-    // fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(notes));
-    // res.json(notes);
-
-
-
-
-    // let noteId = uuid();
-    // let newNote = {
-    //     id: noteId,
-    //     title: req.body.title,
-    //     text: req.body.text
-    // };
-
     let newNote = req.body; //can be reassigned
-    newNote['id'] = Date.now();
+    newNote['id'] = uuidv4();
     newNote['title'] = req.body.title;
     newNote['text'] = req.body.text;
 
@@ -64,24 +44,27 @@ apiRouters.post('/api/notes', (req, res) => {
     });
 
 });
-//DELETE to be added here
+
+
+//DELETE
 apiRouters.delete('/api/notes/:id', (req, res) => {
 
-    fs.readFile('./db/db.json', 'utf8', (err, file) => {
+   fs.readFile('./db/db.json', 'utf8', (err, file) => {
         if (err) throw err;
-
-        let removeNote = req.params.id.toString(); //can be reassigned
-
+ 
+        let removeNote = req.params.id; //can be reassigned
+ 
         const addNotes = JSON.parse(file);
-        const combinedNotes = addNotes.filter(note => note.id.toString() !== removeNote);
-
+        const combinedNotes = addNotes.filter(elem => elem.id != removeNote);
+ 
         const allNotes = JSON.stringify(combinedNotes);
         fs.writeFile('./db/db.json', allNotes, 'utf8', (err) => {
             if (err) throw err;
             console.log("Note deleted successfully");
         });
-        
+       
         return res.send(JSON.parse(allNotes));
+ 
     });
 
 });
