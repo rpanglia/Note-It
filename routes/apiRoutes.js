@@ -73,7 +73,7 @@ apiRouters.delete('/api/notes/:id', (req, res) => {
         let removeNote = req.params.id; //can be reassigned
 
         const addNotes = JSON.parse(file);
-        const combinedNotes = addNotes.filter(elem => elem.id !== removeNote);
+        const combinedNotes = addNotes.filter(elem => elem.id != removeNote);
 
         const allNotes = JSON.stringify(combinedNotes);
         fs.writeFile('./db/db.json', allNotes, 'utf8', (err) => {
