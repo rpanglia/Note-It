@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const apiRouters = express.Router();
 
-let notes = JSON.parse(fs.readFileSync(path.join(__dirname, './db/db.json')));
+// let notes = JSON.parse(fs.readFileSync(path.join(__dirname, './db/db.json')));
 
 
 //GET
@@ -87,15 +87,23 @@ apiRouters.delete('/api/notes/:id', (req, res) => {
 
     // });
 
-    let removeNote = req.params.id;
 
-    notes = notes.filter( (note) => {
-        return note.id !== removeNote;
+    fs.readFile('./db/db.json', 'utf8', (err, file) => {
+        if (err) throw err;
+
+        let removeNote = req.params.id.toString(); //can be reassigned
+
+        const addNotes = JSON.parse(file);
+        const combinedNotes = addNotes.filter(note => note.id.toString() !== removeNote);
+
+        const allNotes = JSON.stringify(combinedNotes);
+        fs.writeFile('./db/db.json', allNotes, 'utf8', (err) => {
+            if (err) throw err;
+            console.log("Note deleted successfully");
+        });
+        
+        return res.send(JSON.parse(allNotes));
     });
-
-    fs.writeFileSync(path.join(__dirname, './db/db.json'), JSON.stringify(notes));
-    res.send("Note has been deleted.");
-
 
 });
 
