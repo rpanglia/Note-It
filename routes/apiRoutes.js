@@ -23,7 +23,7 @@ apiRouters.get('/api/notes', (req, res) => {
 apiRouters.post('/api/notes', (req, res) => {
 
     let newNote = req.body; //can be reassigned
-    newNote['id'] = uuidv4();
+    newNote['id'] = Date.now();
     newNote['title'] = req.body.title;
     newNote['text'] = req.body.text;
 
