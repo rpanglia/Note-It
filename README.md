@@ -5,7 +5,7 @@ Note-It is an application that allows users to write, save and delete notes. Thi
 
 ## Links
 
-Live Deployed Link: 
+Live Deployed Link: https://note-it-97.herokuapp.com/
 Note It Github Repo: https://github.com/rpanglia/Note-It
 Heroku git URL: https://git.heroku.com/note-it-97.git
 
